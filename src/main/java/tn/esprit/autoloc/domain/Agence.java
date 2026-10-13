@@ -5,6 +5,10 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Objects;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "agence")
@@ -58,4 +62,9 @@ public class Agence {
                 ", telephone='" + telephone + '\'' +
                 '}';
     }
+    @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    List<Vehicule> vehicules = new ArrayList<>();
+
+    @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+    List<Employe> employes = new ArrayList<>();
 }

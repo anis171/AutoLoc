@@ -6,6 +6,17 @@ import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicule")
@@ -77,4 +88,21 @@ public class Vehicule {
                 ", statut=" + statut +
                 '}';
     }
+    @ManyToOne(fetch = FetchType.LAZY)
+    Agence agence;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "vehicule_equipement",
+            joinColumns = @JoinColumn(name = "id_vehicule"),
+            inverseJoinColumns = @JoinColumn(name = "id_equipement")
+    )
+    Set<Equipement> equipements = new HashSet<>();
+
+    @OneToMany(
+            mappedBy = "vehicule",
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY
+    )
+    List<Maintenance> maintenances = new ArrayList<>();
 }

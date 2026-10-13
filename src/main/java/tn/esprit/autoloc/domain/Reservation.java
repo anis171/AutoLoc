@@ -6,6 +6,10 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.CascadeType;
 
 @Entity
 @Table(name = "reservation")
@@ -54,4 +58,16 @@ public class Reservation {
                 ", statut=" + statut +
                 '}';
     }
+    @ManyToOne(fetch = FetchType.LAZY)
+    Client client;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    Vehicule vehicule;
+
+    @OneToOne(
+            mappedBy = "reservation",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    Contrat contrat;
 }

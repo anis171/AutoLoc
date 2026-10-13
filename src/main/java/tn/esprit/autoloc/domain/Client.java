@@ -6,7 +6,11 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.Objects;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 @Entity
 @Table(name = "client")
 @Setter
@@ -75,4 +79,10 @@ public class Client {
                 ", dateInscription=" + dateInscription +
                 '}';
     }
+    @OneToMany(
+            mappedBy = "client",
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY
+    )
+    List<Reservation> reservations = new ArrayList<>();
 }

@@ -1,12 +1,18 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToOne;
 
 @Entity
 @Table(name = "contrat")
@@ -54,4 +60,13 @@ public class Contrat {
                 ", valide=" + valide +
                 '}';
     }
+    @OneToMany(
+            mappedBy = "contrat",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
+    List<Paiement> paiements = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY)
+    Reservation reservation;
 }

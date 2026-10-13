@@ -7,6 +7,8 @@ import lombok.experimental.FieldDefaults;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "paiement")
@@ -55,4 +57,6 @@ public class Paiement {
                 ", modePaiement=" + modePaiement +
                 '}';
     }
+    @ManyToOne(fetch = FetchType.LAZY)
+    Contrat contrat;
 }

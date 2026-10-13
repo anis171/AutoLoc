@@ -6,6 +6,8 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "maintenance")
@@ -53,4 +55,6 @@ public class Maintenance {
                 ", description='" + description + '\'' +
                 '}';
     }
+    @ManyToOne(fetch = FetchType.LAZY)
+    Vehicule vehicule;
 }

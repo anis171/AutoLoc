@@ -5,6 +5,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Objects;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "employe")
@@ -53,4 +55,6 @@ public class Employe {
                 ", role=" + role +
                 '}';
     }
+    @ManyToOne(fetch = FetchType.LAZY)
+    Agence agence;
 }
