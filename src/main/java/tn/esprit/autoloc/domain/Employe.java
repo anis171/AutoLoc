@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "employe")
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor

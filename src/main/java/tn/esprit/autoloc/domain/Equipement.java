@@ -8,6 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "equipement")
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor

@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "paiement")
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor

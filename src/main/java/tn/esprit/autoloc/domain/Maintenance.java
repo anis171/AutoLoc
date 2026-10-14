@@ -11,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 @Table(name = "maintenance")
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor

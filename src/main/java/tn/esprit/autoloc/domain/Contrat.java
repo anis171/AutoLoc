@@ -1,10 +1,7 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 import java.math.BigDecimal;
@@ -17,6 +14,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 @Table(name = "contrat")
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)

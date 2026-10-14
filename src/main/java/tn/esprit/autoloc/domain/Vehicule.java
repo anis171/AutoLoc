@@ -20,6 +20,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "vehicule")
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor

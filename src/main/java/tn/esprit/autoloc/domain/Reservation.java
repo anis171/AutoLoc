@@ -13,6 +13,7 @@ import jakarta.persistence.CascadeType;
 
 @Entity
 @Table(name = "reservation")
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
